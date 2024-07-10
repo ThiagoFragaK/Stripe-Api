@@ -49,13 +49,20 @@ class StripeService
 
     public function getBalance()
     {
-        return $this->GuzzleClient()->request(
-            "GET",
-            "/v1/balance",
-            [
-                'headers' => $this->Headers,
-                'form_params' => []
-            ]
-        )->getBody()->getContents();
+        try
+        {
+            return $this->GuzzleClient()->request(
+                "GET",
+                "/v1/balance",
+                [
+                    'headers' => $this->Headers,
+                    'form_params' => []
+                ]
+            )->getBody()->getContents();
+        }
+        catch(\Throwable $e)
+        {
+            return new Exception($e->getMessage());
+        }
     }
 }
