@@ -10,6 +10,7 @@ Route::fallback(function() {
 Route::controller(StripeController::class)
     ->prefix('stripe')
     ->group(function () {
+        Route::get('/balance', 'getBalance');
         Route::post('/auth', 'authenticate');
     }
 );
