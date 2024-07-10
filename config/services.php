@@ -21,5 +21,6 @@ return [
     'stripe' => [
         'base_uri' => env("STRIPE_URL"),
         'key' => env("STRIPE_KEY"),
+        'secret' => env("STRIPE_SECRET"),
     ]
 ];
