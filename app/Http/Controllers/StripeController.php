@@ -14,14 +14,13 @@ class StripeController extends Controller
         $this->StripeService = new StripeService();
     }
 
-    public function authenticate(Request $request)
+    public function authenticate()
     {
-        dd($request);
-        if(!$request->has([]))
-        {
-            return new Exception("Fields missing, fill them and try again.");
-        }
+        return $this->StripeService->authenticate();
+    }
 
-        $this->StripeService->authenticate();
+    public function getBalance()
+    {
+        return $this->StripeService->getBalance();
     }
 }
